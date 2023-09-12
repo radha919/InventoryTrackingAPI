@@ -4,20 +4,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Inventory.DAL.Repositories
 {
     public class CustomerRepository : ICustomerRepo
     {   
-        private InventoryDbcontext _dbcontext;
+        private readonly InventoryDbcontext _dbcontext;
         public CustomerRepository(InventoryDbcontext dbcontext)
         {
-            _dbcontext=dbcontext;
+           _dbcontext = dbcontext;
         }
         public void AddCustomer(Customer customer)
         {
-            _dbcontext.Customer.A
+            _dbcontext.Customer.Add(customer);
+            _dbcontext.Customer.SaveChanges();
         }
 
         public void DeleteCustomer(int id)

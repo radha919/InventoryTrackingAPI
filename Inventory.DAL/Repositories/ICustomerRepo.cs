@@ -1,5 +1,6 @@
 ﻿using Inventory.EAL.Models;
 using System;
+using Inventory.DAL.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
