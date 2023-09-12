@@ -18,8 +18,8 @@ namespace Inventory.DAL.Repositories
         }
         public void AddCustomer(Customer customer)
         {
-            _dbcontext.Customer.Add(customer);
-            _dbcontext.Customer.SaveChanges();
+            _dbcontext.Customers.Add(customer);
+            _dbcontext.SaveChanges();
         }
 
         public void DeleteCustomer(int id)
