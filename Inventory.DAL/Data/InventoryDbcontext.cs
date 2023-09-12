@@ -10,6 +10,8 @@ namespace Inventory.DAL.Data
 {
     public class InventoryDbcontext:DbContext
     {
+        internal readonly object Customer;
+
         public InventoryDbcontext(DbContextOptions<InventoryDbcontext> options):base(options)
         {
 
