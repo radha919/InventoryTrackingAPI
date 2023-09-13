@@ -10,11 +10,12 @@ using System.Threading.Tasks;
 namespace Inventory.DAL.Repositories
 {
     public class CustomerRepository : ICustomerRepo
-    {   
-        private readonly InventoryDbcontext _dbcontext;
-        public CustomerRepository(InventoryDbcontext dbcontext)
+    {
+        InventoryDbcontext _dbcontext;
+
+        public CustomerRepository(InventoryDbcontext dbContext)
         {
-           _dbcontext = dbcontext;
+            _dbcontext = dbContext;
         }
         public void AddCustomer(Customer customer)
         {
@@ -22,24 +23,28 @@ namespace Inventory.DAL.Repositories
             _dbcontext.SaveChanges();
         }
 
-        public void DeleteCustomer(int id)
+        public void DeleteCustomer(int customerId)
         {
-            throw new NotImplementedException();
+            var customer = _dbcontext.Customers.Find(customerId);
+            _dbcontext.Customers.Remove(customer);
+            _dbcontext.SaveChanges();
         }
 
-        public List<Customer> GetAllCustomers()
+        public Customer GetCustomer(int customerId)
         {
-            throw new NotImplementedException();
+            return _dbcontext.Customers.Find(customerId);
         }
 
-        public Customer GetCustomer(int id)
+        public IEnumerable<Customer> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            return _dbcontext.Customers.ToList();
         }
 
         public void UpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            _dbcontext.Entry(customer).State = EntityState.Modified;
+            _dbcontext.SaveChanges();
         }
     }
 }
+    

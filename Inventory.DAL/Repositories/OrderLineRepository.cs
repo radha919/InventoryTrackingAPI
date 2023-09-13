@@ -11,42 +11,42 @@ namespace Inventory.DAL.Repositories
 {
     public class OrderLineRepository : IOrderLineRepository
     {
-        private readonly InventoryDbcontext _context;
+        InventoryDbcontext _dbcontext;
 
-        public OrderLineRepository(InventoryDbcontext context)
+        public OrderLineRepository(InventoryDbcontext dbContext)
         {
-            _context = context;
+            _dbcontext = dbContext;
+        }
+        public void AddOrderLine(OrderLineItem orderline)
+        {
+            _dbcontext.OrdersLineItem.Add(orderline);
+            _dbcontext.SaveChanges();
         }
 
-        public void AddOrderLine(OrderLineItem orderLine)
+        public void DeleteOrderLine(int orderlineId)
         {
-            _context.OrdersLineItem.Add(orderLine);
-            _context.SaveChanges();
+            var orderLine = _dbcontext.OrdersLineItem.Find(orderlineId);
+            _dbcontext.OrdersLineItem.Remove(orderLine);
+            _dbcontext.SaveChanges();
         }
 
-        public void DeleteOrderLine(int orderLineId)
+        public OrderLineItem GetOrderLine(int orderlineId)
         {
-            throw new NotImplementedException();
+            return _dbcontext.OrdersLineItem.Find(orderlineId);
         }
 
-        public IEnumerable<OrderLineItem> GetAllOrderLines()
+        public IEnumerable<OrderLineItem> GetAllOrdersLine()
         {
-            throw new NotImplementedException();
-        }
-
-        public OrderLineItem GetOrderLineById(int orderLineId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
+            return _dbcontext.OrdersLineItem.ToList();
         }
 
         public void UpdateOrderLine(OrderLineItem orderLine)
         {
-            throw new NotImplementedException();
+            _dbcontext.Entry(orderLine).State = EntityState.Modified;
+            _dbcontext.SaveChanges();
         }
+
+        
     }
 }
+

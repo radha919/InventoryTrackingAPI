@@ -9,11 +9,16 @@ namespace Inventory.DAL.Repositories
 {
     public interface IOrderLineRepository
     {
-        IEnumerable<OrderLineItem> GetAllOrderLines() ;
-        OrderLineItem GetOrderLineById(int orderLineId);
-        void AddOrderLine(OrderLineItem orderLine);
-        void UpdateOrderLine(OrderLineItem orderLine);
-        void DeleteOrderLine(int orderLineId);
-        void SaveChanges();
+         
+
+        public void AddOrderLine(OrderLineItem orderline);
+
+        public void UpdateOrderLine(OrderLineItem orderline);
+
+        public void DeleteOrderLine(int id);
+
+        public OrderLineItem GetOrderLine(int id);
+
+        IEnumerable<OrderLineItem> GetAllOrdersLine();
     }
 }

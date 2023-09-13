@@ -11,43 +11,39 @@ namespace Inventory.DAL.Repositories
 {
     public class ProductRepo : IProductRepo
     {
-        private readonly InventoryDbcontext _inventoryDbContext;
+        InventoryDbcontext _dbcontext;
 
-        public ProductRepo(InventoryDbcontext inventoryDbContext)
+        public ProductRepo(InventoryDbcontext dbContext)
         {
-            _inventoryDbContext = inventoryDbContext;
+            _dbcontext = dbContext;
         }
-
         public void AddProduct(Product product)
         {
-            _inventoryDbContext.Product.Add(product);
-            _inventoryDbContext.SaveChanges();
+            _dbcontext.Products.Add(product);
+            _dbcontext.SaveChanges();
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            var product = _dbcontext.Products.Find(productId);
+            _dbcontext.Products.Remove(product);
+            _dbcontext.SaveChanges();
+        }
+
+        public Product GetProduct(int productId)
+        {
+            return _dbcontext.Products.Find(productId);
+        }
+
+        public IEnumerable<Product> GetAllProduct()
+        {
+            return _dbcontext.Products.ToList();
         }
 
         public void UpdateProduct(Product product)
         {
-            _inventoryDbContext.Entry(product).State = EntityState.Modified;
-            _inventoryDbContext.SaveChanges();
-        }
-
-        public void DeleteProduct(int id)
-        {
-            var product = _inventoryDbContext.Product.Find(id);
-            if (product != null)
-            {
-                _inventoryDbContext.Product.Remove(product);
-                _inventoryDbContext.SaveChanges();
-            }
-        }
-
-        public Product? GetProduct(int id)
-        {
-            return _inventoryDbContext.Product.Find(id);
-        }
-
-        public List<Product> GetAllProducts()
-        {
-            return _inventoryDbContext.Product.ToList();
+            _dbcontext.Entry(product).State = EntityState.Modified;
+            _dbcontext.SaveChanges();
         }
     }
 }

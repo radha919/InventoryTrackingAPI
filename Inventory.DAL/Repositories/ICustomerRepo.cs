@@ -20,8 +20,8 @@ namespace Inventory.DAL.Repositories
 
             public Customer GetCustomer(int id);
 
-            public List<Customer> GetAllCustomers();
-        }
+            IEnumerable<Customer> GetAllCustomers();
+    }
     }
 
 

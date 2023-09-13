@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory.EAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,14 @@ namespace Inventory.DAL.Repositories
 {
     public interface IPurchaseLineRepo
     {
-        public void AddPurchaseLineRepo(PurchaseLineRepo purchaseOrderLineItem);
+        public void AddPurchaseLine(PurchaseLineItem purchaseLine);
 
-        public void UpdatePurchaseLineRepo(PurchaseLineRepo purchaseOrderLineItem);
+        public void UpdatePurchaseLine(PurchaseLineItem purchaseLine);
 
-        public void DeletePurchaseOrderLineItem(int id);
+        public void DeletePurchase(int id);
 
-        public PurchaseLineRepo? GetPurchaseOrderLineItem(int id);
+        public PurchaseLineItem GetPurchaseLine(int id);
 
-        public List<PurchaseLineRepo> GetAllPurchaseOrderLineItems();
+        IEnumerable<PurchaseLineItem> GetAllPurchaseLine();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Inventory.DAL.Data;
 using Inventory.EAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,28 +11,38 @@ namespace Inventory.DAL.Repositories
 {
     public class PurchaseLineRepo : IPurchaseLineRepo
     {
-        public void AddPurchaseLineRepo(PurchaseLineRepo purchaseOrderLineItem)
+        InventoryDbcontext _dbcontext;
+
+        public PurchaseLineRepo(InventoryDbcontext dbContext)
         {
-            
+            _dbcontext = dbContext;
+        }
+        public void AddPurchaseLine(PurchaseLineItem purchaseLine)
+        {
+            _dbcontext.PurchasesLineItem.Add(purchaseLine);
+            _dbcontext.SaveChanges();
         }
 
-        public void DeletePurchaseOrderLineItem(int id)
+        public void DeletePurchaseLine(int purchaseLineId)
         {
-            throw new NotImplementedException();
+            var customer = _dbcontext.Customers.Find(customerId);
+            _dbcontext.Customers.Remove(customer);
+            _dbcontext.SaveChanges();
         }
 
-        public List<PurchaseLineRepo> GetAllPurchaseOrderLineItems()
+        public Customer GetCustomer(int customerId)
         {
-            throw new NotImplementedException();
+            return _dbcontext.Customers.Find(customerId);
         }
 
-        public PurchaseLineRepo? GetPurchaseOrderLineItem(int id)
+        public IEnumerable<Customer> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            return _dbcontext.Customers.ToList();
         }
 
-        public void UpdatePurchaseLineRepo(PurchaseLineRepo purchaseOrderLineItem)
+        public void UpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            _dbcontext.Entry(customer).State = EntityState.Modified;
+            _dbcontext.SaveChanges();
         }
     }
