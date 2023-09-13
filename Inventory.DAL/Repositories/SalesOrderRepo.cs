@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 namespace Inventory.DAL.Repositories
 {
 
-    public class SalesOrder : ISalesOrderRepo
+    public class SalesOrderRepo : ISalesOrderRepo
     {
         InventoryDbcontext _dbcontext;
 
-        public SalesOrder(InventoryDbcontext dbContext)
+        public SalesOrderRepo(InventoryDbcontext dbContext)
         {
             _dbcontext = dbContext;
         }
-        public void AddSales(SalesOrder salesOrder)
+        public void AddSales(SalesOrderr salesOrder)
         {
             _dbcontext.SalesOrders.Add(salesOrder);
             _dbcontext.SaveChanges();
@@ -27,21 +27,21 @@ namespace Inventory.DAL.Repositories
         public void DeleteSales(int salesId)
         {
             var sale = _dbcontext.SalesOrders.Find(salesId);
-            _dbcontext.SalesOrders.Remove(salesId);
+            _dbcontext.SalesOrders.Remove(sale);
             _dbcontext.SaveChanges();
         }
 
-        public SalesOrder GetSales(int salesOrderId)
+        public SalesOrderr GetSales(int salesOrderId)
         {
             return _dbcontext.SalesOrders.Find(salesOrderId);
         }
 
-        public IEnumerable<SalesOrder> GetAllSales()
+        public IEnumerable<SalesOrderr> GetAllSales()
         {
             return _dbcontext.SalesOrders.ToList();
         }
 
-        public void UpdateSales(SalesOrder salesOrder)
+        public void UpdateSales(SalesOrderr salesOrder)
         {
             _dbcontext.Entry(salesOrder).State = EntityState.Modified;
             _dbcontext.SaveChanges();

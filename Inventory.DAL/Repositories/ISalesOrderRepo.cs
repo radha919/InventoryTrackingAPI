@@ -9,14 +9,14 @@ namespace Inventory.DAL.Repositories
 {
     public interface ISalesOrderRepo
     {
-        public void AddSales(SalesOrder sales);
+        public void AddSales(SalesOrderr sales);
 
-        public void UpdateSales(SalesOrder sales);
+        public void UpdateSales(SalesOrderr sales);
 
         public void DeleteSales(int id);
 
-        public SalesOrder GetSales(int id);
+        public SalesOrderr GetSales(int id);
 
-        IEnumerable<SalesOrder> GetAllSales();
+        IEnumerable<SalesOrderr> GetAllSales();
     }
 }
