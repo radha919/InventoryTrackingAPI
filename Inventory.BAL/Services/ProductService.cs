@@ -32,14 +32,14 @@ namespace Inventory.BAL.Services
             _productRepository.DeleteProduct(productId);
         }
         //Get GetMovieByid
-        public Order GetProductByid(int productId)
+        public Product GetProduct(int productId)
         {
-            return _productRepository.GetProductById(productId);
+            return _productRepository.GetProduct(productId);
         }
         //Get GetMovies
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetAllProduct()
         {
-            return _productRepository.GetProducts();
+            return _productRepository.GetAllProduct();
         }
     }
 }

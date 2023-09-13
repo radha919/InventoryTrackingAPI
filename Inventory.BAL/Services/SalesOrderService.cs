@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inventory.BAL.Services
 {
-    public class SalesOrderService
+    public class SalesOrderService:ISalesOrderLineRepo
     {
         ISalesOrderLineRepo _salesOrderRepository;
         public SalesOrderService(ISalesOrderLineRepo salesOrderRepository)
@@ -17,14 +17,14 @@ namespace Inventory.BAL.Services
         }
 
 
-        public void AddSalesOrder(SalesOrder salesOrder)
+        public void AddSalesOrder(SalesOrderLineItem salesOrder)
         {
             _salesOrderRepository.AddSalesOrder(salesOrder);
         }
         //update movie
-        public void UpdateSalesOrder(SalesOrder salesOrder)
+        public void UpdateSalesOrder(SalesOrderLineItem salesOrder)
         {
-            _salesOrderRepository.UpdateSalesOrder(salesorder);
+            _salesOrderRepository.UpdateSalesOrder(salesOrder);
         }
         //delete movie
         public void DeleteSalesOrder(int salesorderId)
@@ -32,14 +32,14 @@ namespace Inventory.BAL.Services
             _salesOrderRepository.DeleteSalesOrder(salesorderId);
         }
         //Get GetMovieByid
-        public Order GetSalesOrderByid(int salesorderId)
+        public SalesOrderLineItem GetSalesOrder(int salesorderId)
         {
-            return _salesOrderRepository.GetsalesOrderById(salesorderId);
+            return _salesOrderRepository.GetSalesOrder(salesorderId);
         }
         //Get GetMovies
-        public IEnumerable<SalesOrder> GetSalesOrders()
+        public IEnumerable<SalesOrderLineItem> GetAllSalesOrder()
         {
-            return _salesOrderRepository.GetSalesOrders();
+            return _salesOrderRepository.GetAllSalesOrder();
         }
     }
 }

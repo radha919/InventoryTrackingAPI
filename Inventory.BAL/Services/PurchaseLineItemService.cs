@@ -32,14 +32,14 @@ namespace Inventory.BAL.Services
             _purchaseLineRepository.DeletePurchaseLine(purchaseLineId);
         }
         //Get GetMovieByid
-        public Order GetPurchaseLineByid(int purchaseLineId)
+        public PurchaseLineItem  GetPurchaseLine(int purchaseLineId)
         {
-            return _purchaseLineRepository.GetPurchaseLineById(purchaseLineId);
+            return _purchaseLineRepository.GetPurchaseLine(purchaseLineId);
         }
         //Get GetMovies
-        public IEnumerable<PurchaseLineItem> GetPurchaseLine()
+        public IEnumerable<PurchaseLineItem> GetAllPurchaseLine()
         {
-            return _purchaseLineRepository.GetPurchaseLine();
+            return _purchaseLineRepository.GetAllPurchaseLine();
         }
     }
 }

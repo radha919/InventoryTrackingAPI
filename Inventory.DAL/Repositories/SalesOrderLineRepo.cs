@@ -11,48 +11,39 @@ namespace Inventory.DAL.Repositories
 {
     public class SalesOrderLineRepo : ISalesOrderLineRepo
     {
-        private readonly InventoryDbcontext _dbContext;
+        InventoryDbcontext _dbcontext;
 
         public SalesOrderLineRepo(InventoryDbcontext dbContext)
         {
-            _dbContext = dbContext;
+            _dbcontext = dbContext;
+        }
+        public void AddSalesOrder(SalesOrderLineItem salesOrder)
+        {
+            _dbcontext.SalesOrdersLineItem.Add(salesOrder);
+            _dbcontext.SaveChanges();
         }
 
-        public SalesOrderLineItem GetSalesOrderLineItem(int salesOrderId, int itemId)
+        public void DeleteSalesOrder(int salesOrderId)
         {
-            return _dbContext.SalesOrderLineRepo
-                .FirstOrDefault(item => item.SalesOrderId == salesOrderId && item.ItemId == itemId);
+            var salesOrder = _dbcontext.SalesOrdersLineItem.Find(salesOrderId);
+            _dbcontext.SalesOrdersLineItem.Remove(salesOrder);
+            _dbcontext.SaveChanges();
         }
 
-        public IEnumerable<SalesOrderLineItem> GetAllSalesOrderLineItems(int salesOrderId)
+        public SalesOrderLineItem GetSalesOrder(int salesOrderId)
         {
-            return _dbContext.SalesOrderLineItems
-                .Where(item => item.SalesOrderId == salesOrderId)
-                .ToList();
+            return _dbcontext.SalesOrdersLineItem.Find(salesOrderId);
         }
 
-        public void AddSalesOrderLineItem(SalesOrderLineItem lineItem)
+        public IEnumerable<SalesOrderLineItem> GetAllSalesOrder()
         {
-            _dbContext.SalesOrderLineItems.Add(lineItem);
-            _dbContext.SaveChanges();
+            return _dbcontext.SalesOrdersLineItem.ToList();
         }
 
-        public void UpdateSalesOrderLineItem(SalesOrderLineItem lineItem)
+        public void UpdateSalesOrder(SalesOrderLineItem salesOrder)
         {
-            _dbContext.Entry(lineItem).State = EntityState.Modified;
-            _dbContext.SaveChanges();
-        }
-
-        public void DeleteSalesOrderLineItem(int salesOrderId, int itemId)
-        {
-            var lineItem = _dbContext.SalesOrderLineItems
-                .FirstOrDefault(item => item.SalesOrderId == salesOrderId && item.ItemId == itemId);
-
-            if (lineItem != null)
-            {
-                _dbContext.SalesOrderLineItems.Remove(lineItem);
-                _dbContext.SaveChanges();
-            }
+            _dbcontext.Entry(salesOrder).State = EntityState.Modified;
+            _dbcontext.SaveChanges();
         }
     }
-}
+    }

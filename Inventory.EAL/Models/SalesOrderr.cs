@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inventory.EAL.Models
 {
-    public class SalesOrder
+    public class SalesOrderr
     {
         [Key]
         public int SalesOrderId { get; set; }

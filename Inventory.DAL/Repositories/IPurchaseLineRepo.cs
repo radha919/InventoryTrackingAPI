@@ -13,7 +13,7 @@ namespace Inventory.DAL.Repositories
 
         public void UpdatePurchaseLine(PurchaseLineItem purchaseLine);
 
-        public void DeletePurchase(int id);
+        public void DeletePurchaseLine(int id);
 
         public PurchaseLineItem GetPurchaseLine(int id);
 

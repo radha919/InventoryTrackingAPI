@@ -32,12 +32,12 @@ namespace Inventory.BAL.Services
             _orderLineRepository.DeleteOrderLine(orderId);
         }
         //Get GetMovieByid
-        public Order GetOrderLine(int orderId)
+        public OrderLineItem GetOrderLine(int orderId)
         {
             return _orderLineRepository.GetOrderLine(orderId);
         }
         //Get GetMovies
-        public IEnumerable<Order> GetAllOrdersLine()
+        public IEnumerable<OrderLineItem> GetAllOrdersLine()
         {
             return _orderLineRepository.GetAllOrdersLine();
         }

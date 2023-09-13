@@ -25,24 +25,26 @@ namespace Inventory.DAL.Repositories
 
         public void DeletePurchaseLine(int purchaseLineId)
         {
-            var customer = _dbcontext.Customers.Find(customerId);
-            _dbcontext.Customers.Remove(customer);
+            var purchaseLine = _dbcontext.PurchasesLineItem.Find(purchaseLineId);
+            _dbcontext.PurchasesLineItem.Remove(purchaseLine);
             _dbcontext.SaveChanges();
         }
 
-        public Customer GetCustomer(int customerId)
+        public PurchaseLineItem GetPurchaseLine(int purchaseLineId)
         {
-            return _dbcontext.Customers.Find(customerId);
+            return _dbcontext.PurchasesLineItem.Find(purchaseLineId);
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<PurchaseLineItem> GetAllPurchaseLine()
         {
-            return _dbcontext.Customers.ToList();
+            return _dbcontext.PurchasesLineItem.ToList();
         }
 
-        public void UpdateCustomer(Customer customer)
+        public void UpdatePurchaseLine(PurchaseLineItem purchaseLine)
         {
-            _dbcontext.Entry(customer).State = EntityState.Modified;
+            _dbcontext.Entry(purchaseLine).State = EntityState.Modified;
             _dbcontext.SaveChanges();
         }
     }
+}
+

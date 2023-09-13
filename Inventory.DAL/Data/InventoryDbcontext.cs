@@ -25,7 +25,7 @@ namespace Inventory.DAL.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLineItem> OrdersLineItem { get; set;}
 
-        public DbSet<SalesOrder> SalesOrders { get; set; }
+        public DbSet<SalesOrderr> SalesOrders { get; set; }
         public DbSet<SalesOrderLineItem> SalesOrdersLineItem { get; set;}
 
         public DbSet<Customer> Customers { get; set; }
