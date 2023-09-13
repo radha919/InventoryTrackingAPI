@@ -17,12 +17,12 @@ namespace Inventory.BAL.Services
         }
 
 
-        public void AddSales(SalesOrder sales)
+        public void AddSales(SalesOrderr sales)
         {
             _salesRepository.AddSales(sales);
         }
         //update movie
-        public void UpdateSales(SalesOrder sales)
+        public void UpdateSales(SalesOrderr sales)
         {
             _salesRepository.UpdateSales(sales);
         }
@@ -32,12 +32,12 @@ namespace Inventory.BAL.Services
             _salesRepository.DeleteSales(saleId);
         }
         //Get GetMovieByid
-        public SalesOrder GetSales(int saleId)
+        public SalesOrderr GetSales(int saleId)
         {
             return _salesRepository.GetSales(saleId);
         }
         //Get GetMovies
-        public IEnumerable<SalesOrder> GetAllSales()
+        public IEnumerable<SalesOrderr> GetAllSales()
         {
             return _salesRepository.GetAllSales();
         }

@@ -24,13 +24,13 @@ namespace Inventory.BAL.Services
             return _context.Customers.ToList();
         }
 
-        public Customer GetCustomerById(int customerId)
+        public Customer GetCustomer(int customerId)
         {
             // You can add any business logic or validation here
             return _context.Customers.Find(customerId);
         }
 
-        public void CreateCustomer(Customer customer)
+        public void AddCustomer(Customer customer)
         {
             // You can add any business logic or validation here
             _context.Customers.Add(customer);
