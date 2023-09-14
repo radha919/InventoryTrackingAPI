@@ -9,7 +9,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using InventoryTrackingAPI.Security;
 using Microsoft.AspNetCore.Authentication;
-using Amazon.OpsWorks.Model;
+//using Amazon.OpsWorks.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
