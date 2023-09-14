@@ -6,6 +6,7 @@ using Inventory.EAL.Models;
 
 namespace InventoryTrackingAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
