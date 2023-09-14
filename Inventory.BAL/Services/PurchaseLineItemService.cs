@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inventory.BAL.Services
 {
-    internal class PurchaseLineItemService
+    public class PurchaseLineItemService
     {
         IPurchaseLineRepo _purchaseLineRepository;
         public PurchaseLineItemService(IPurchaseLineRepo purchaseLineRepository)
