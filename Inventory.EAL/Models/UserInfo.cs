@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace Inventory.EAL.Models
 {
+    public class UserEmailPassword
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
     public class UserInfo
     {
         [Key]
@@ -17,6 +23,7 @@ namespace Inventory.EAL.Models
         public string Lastname { get; set; }
 
         [DataType(DataType.EmailAddress)]
+
         public string Email { get; set; }
         public string Password { get; set; }
 

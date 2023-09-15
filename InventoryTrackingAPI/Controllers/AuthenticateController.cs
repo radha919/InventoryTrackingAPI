@@ -29,7 +29,7 @@ namespace InventoryTrackingAPI.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Post(UserInfo _userData)
+        public async Task<IActionResult> Post(UserEmailPassword _userData)
         {
 
             if (_userData != null && _userData.Email != null && _userData.Password != null)
@@ -71,7 +71,7 @@ namespace InventoryTrackingAPI.Controllers
         private async Task<UserInfo> GetUser(string email, string password)
         {
             UserInfo UserInfo = null;
-            var result = _context.userInfo.Where(u => u.Email == email && u.Password == password);
+            var result = _context.userInfo.Where(u => u.Email == email && u.Password == password).ToList();
             foreach (var item in result)
             {
                 UserInfo = new UserInfo();

@@ -10,10 +10,11 @@ namespace Inventory.EAL.Models
     public class Customer
     {
         [Key]
-        public int ProductId { get; set; }
+        public int CustomerId { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
-        public decimal Price { get; set; }
+        
+
+        
     }
 }
